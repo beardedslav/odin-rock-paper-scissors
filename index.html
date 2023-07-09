@@ -1,12 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <script src="rock-paper-scissors.js" />
-</head>
-<body>
-    
-</body>
+    <script src="rock-paper-scissors.js"></script>
+  </head>
+  <body>
+    <div>
+      <button onclick="playRock()">Rock</button>
+      <button onclick="playPaper()">Paper</button>
+      <button onclick="playScissors()">Scissors</button>
+    </div>
+    <div>
+      <p id="playerScore">Player score: 0</p>
+      <p id="computerScore">Computer score: 0</p>
+      <p id="winner"></p>
+    </div>
+  </body>
 </html>

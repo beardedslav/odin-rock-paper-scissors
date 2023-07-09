@@ -1,10 +1,43 @@
+let playerScore = 0;
+let computerScore = 0;
+
 function getComputerChoice() {
   return ["Rock", "Paper", "Scissors"][Math.floor(Math.random() * 3)];
 }
 
-function getPlayerChoice() {
-  let playerChoice = prompt("Rock, paper or scissors?");
-  return playerChoice;
+function playRock() {
+  const computerSelection = getComputerChoice();
+  playRoundAndProcessResult("rock", computerSelection);
+}
+
+function playPaper() {
+  const computerSelection = getComputerChoice();
+  playRoundAndProcessResult("paper", computerSelection);
+}
+
+function playScissors() {
+  const computerSelection = getComputerChoice();
+  playRoundAndProcessResult("scissors", computerSelection);
+}
+
+function playRoundAndProcessResult(playerSelection, computerSelection) {
+  roundResult = playRound(playerSelection, computerSelection);
+  if (roundResult.includes("You win")) {
+    playerScore++;
+  } else if (roundResult.includes("You lose")) {
+    computerScore++;
+  }
+  playerScoreParagraph = document.querySelector("#playerScore");
+  playerScoreParagraph.innerHTML = `Player score : ${playerScore}`;
+  computerScoreParagraph = document.querySelector("#computerScore");
+  computerScoreParagraph.innerHTML = `Computer score : ${computerScore}`;
+
+  winnerParagraph = document.querySelector("#winner");
+  if (playerScore === 5) {
+    winnerParagraph.innerHTML = "<b>YOU WIN!</b>";
+  } else if (computerScore === 5) {
+    winnerParagraph.innerHTML = "<b>COMPUTER WINS!</b>";
+  }
 }
 
 function playRound(playerSelection, computerSelection) {
@@ -35,19 +68,3 @@ function playRound(playerSelection, computerSelection) {
     }
   }
 }
-
-let playerScore = 0;
-let computerScore = 0;
-for (let index = 0; index < 5; index++) {
-  const playerSelection = getPlayerChoice();
-  const computerSelection = getComputerChoice();
-  const roundResult = playRound(playerSelection, computerSelection);
-  console.log(roundResult);
-  if (roundResult.includes("You win")) {
-    playerScore++;
-  } else if (roundResult.includes("You lose")) {
-    computerScore++;
-  }
-}
-
-console.log(`You: ${playerScore}, computer: ${computerScore}`);
